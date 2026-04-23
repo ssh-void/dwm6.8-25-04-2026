@@ -31,6 +31,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "ffplay",   "ffplay",       NULL,       0,            1,           1,           -1 },
+	{ "st",        "scpad",       NULL,       0,            1,           1,           -1 },
 };
 
 /* layout(s) */
