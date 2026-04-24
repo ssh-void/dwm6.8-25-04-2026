@@ -6,12 +6,12 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int splitstatus        = 1;        /* 1 for split status items */
-static const char *splitdelim        = ";";       /* Character used for separating status */
+static const char *splitdelim        = "@";       /* Character used for separating status */
 static const char *fonts[]             = {
 	"Terminess Nerd Font Mono:style=Bold:pixelsize=22:antialias=true:autohint=true",
 	"JoyPixels:style=Bold:pixelsize=16:antialias=true:autohint=true"
 };
-static const char dmenufont[]       = "monospace:size=10";
+//static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -26,14 +26,47 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "ffplay",   "ffplay",       NULL,       0,            1,           1,           -1 },
-	{ "st",        "scpad",       NULL,       0,            1,           1,           -1 },
+	/* class                   instance                   title          tags mask     iscentered   isfloating   monitor */
+	{ "st",                    "scpad",                    NULL,             0,            1,           1,           -1 },
+/*	{ "Thunar",                "thunar",                   NULL,             0,            1,           1,           -1 },*/
+	{ "qBittorrent",           "qbittorrent",              NULL,           1 << 8,         1,           1,           -1 },
+	{ "Xfce4-appfinder",       "xfce4-appfinder",          NULL,             0,            1,           1,           -1 },
+	{ "Nvidia-settings",       "nvidia-settings",          NULL,             0,            1,           1,           -1 },
+	{ "pavucontrol",           "pavucontrol",              NULL,             0,            1,           1,           -1 },
+	{ "Blueman-manager",       "blueman-manager",          NULL,             0,            1,           1,           -1 },
+	{ "Zathura",               "org.pwmt.zathura",         NULL,             0,            1,           1,           -1 },
+	{ "Ghostscript",           "ghostscript",              NULL,             0,            1,           1,           -1 },
+	{ "Evince",                "org.gnome.Evince",         NULL,             0,            1,           1,           -1 },
+	{ "Rhythmbox",             "rhythmbox",                NULL,             0,            1,           1,           -1 },
+	{ "Nsxiv",                 "nsxiv",                    NULL,             0,            1,           1,           -1 },
+	{ "org.cryptomator.launcher.Cryptomator$MainApp", "org.cryptomator.launcher.Cryptomator$MainApp", NULL, 0, 1, 1, -1 },
+/*	{ "VeraCrypt",             "veracrypt",                NULL,           1 << 7,         1,           1,           -1 },*/
+	{ "TelegramDesktop",       "telegram-desktop",         NULL,             0,            1,           1,           -1 },
+	{ "Firefox",               "Places",                   NULL,             0,            1,           1,           -1 },
+	{ "Gcolor2",               "gcolor2",                  NULL,             0,            1,           1,           -1 },
+	{ "mpv",                   "mpvk",                     NULL,             0,            1,           1,           -1 },
+	{ "ffpaly",                "ffpaly",                   NULL,             0,            1,           1,           -1 },
+	{ "Brave-browser" "crx_nngceckbapebfimnlniiiahkandclblb", NULL,          0,            1,           1,           -1 },
+	{ "Lxappearance",          "lxappearance",             NULL,             0,            1,           1,           -1 },
+	{ "easyeffects" ,          "easyeffects",              NULL,             0,            1,           1,           -1 },
+	{ "Tor Browser",           "Navigator",                NULL,             0,            1,           1,           -1 },
+	{ "vlc",                   "vlc",                      NULL,             0,            1,           1,           -1 },
+	{ "ksnip",                 "ksnip",                    NULL,             0,            1,           1,           -1 },
+	{ "Matplotlib",            "matplotlib",               NULL,             0,            1,           1,           -1 },
+	{ "Brave-browser",         "brave-browser",            NULL,           1 << 1,         1,           0,           -1 },
+	{ "Gedit",                 "gedit",                    NULL,             0,            1,           0,           -1 },
+	{ "Firefox",                "Navigator",               NULL,           1 << 0,         1,           0,           -1 },
+	{ "Thunar",                 "thunar",                  NULL,                0,         1,           1,           -1 },
+	{ "KeePassX",               "keepassxc",               NULL,                0,         1,           1,           -1 },
+	{ "libreoffice-writer",     "libreoffice",             NULL,                0,         1,           1,           -1 },
+	{ "Tor Browser",             "Places",                 NULL,                0,         1,           1,           -1 },
+	{ "ffplay",                  "ffplay",                 NULL,                0,         1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -105,15 +138,15 @@ static const Key keys[] = {
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+//	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+//	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+//	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+//	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+//	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+//	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+//	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
