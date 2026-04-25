@@ -133,9 +133,6 @@ static const Key keys[] = {
 
 
 /* button definitions */
-// MODKEY <=> ClkClientWin
-// ClkLtSymbol <=> left
-// ClkTagBar <=> right
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
