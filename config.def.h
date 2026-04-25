@@ -134,6 +134,9 @@ static const Key keys[] = {
 
 
 /* button definitions */
+// MODKEY <=> ClkClientWin
+// ClkLtSymbol <=> left
+// ClkTagBar <=> right
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
@@ -142,7 +145,7 @@ static const Button buttons[] = {
 //	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 //	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-//	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} }, // for my case ( xinput `libinput Middle Emulation Enabled`)
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 //	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
